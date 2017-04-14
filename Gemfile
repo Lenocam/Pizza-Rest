@@ -19,6 +19,7 @@ gem 'figaro'
 gem 'devise'
 gem 'activeadmin', github: 'activeadmin'
 gem 'inherited_resources', github: 'activeadmin/inherited_resources'
+gem 'active_skin'
 
 group :development, :test do
   gem 'byebug', platform: :mri
