@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>PizzaRest</title>
+    <title>Fake Pizza</title>
     <%= csrf_meta_tags %>
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
@@ -12,10 +12,20 @@
 
     <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
   </head>
-
-  <body>
-    <%= render "shared/header" %>
-    <%= yield %>
-    <%= render "shared/footer" %>
-  </body>
+  <div id="wrapper">
+    <%= render 'shared/sidebar' %>
+    <body id="<%= controller_name %>" class="<%= action_name %>">
+      <%= render "shared/header" %>
+      <%= render "shared/alerts" %>
+      <%= yield %>
+      <%= render "shared/footer" %>
+    </body>
+  </div>
 </html>
+<!-- Menu Toggle Script -->
+<script>
+$("#menu-toggle").click(function(e) {
+    e.preventDefault();
+    $("#wrapper").toggleClass("toggled");
+});
+</script>
