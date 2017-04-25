@@ -1,0 +1,2 @@
+class Sizeable < ApplicationRecord
+end

@@ -1,8 +1,8 @@
-<%= simple_form_for menu do |f| %>
+<%= simple_form_for @menu do |f| %>
     <%= f.error_notification %>
     <div class="form-group">
       <%= f.input :title, placeholder: "Title" %>
-      <%= f.input :description, placeholder: "Describe the menum" %>
+      <%= f.input :description, placeholder: "Describe the menu" %>
     </div>
     <div class="actions">
       <%= f.button :submit %>

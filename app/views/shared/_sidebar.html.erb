@@ -1,19 +1,27 @@
 <!-- Sidebar -->
 <div id="sidebar-wrapper">
     <ul class="sidebar-nav">
-        <li>
+        <li id="title">
           <%= link_to 'Fake Pizza', root_path %>
         </li>
 
-        <li>
-            <a href="#">Regular</a>
-        </li>
-        <li>
-            <a href="#">Pizza</a>
-        </li>
-        <li>
-            <a href="#">Dinner</a>
-        </li>
+
+
+        <div id="accordion">
+          <% @menus.each do |menu| %>
+            <h3><%= menu.title %></h3>
+            <div>
+            <% menu.categories.each do |category| %>
+
+              <ul class="sub-category">
+                <li><%= link_to category.title, category %></li>
+
+              </ul>
+              <% end %>
+            </div>
+          <% end %>
+        </div>
+<!--
         <li>
             <a href="#">Beer</a>
         </li>
@@ -27,6 +35,18 @@
         <li>
             <a href="#">Contact</a>
         </li>
+      -->
     </ul>
 </div>
+
 <!-- /#sidebar-wrapper -->
+<script>
+  $(function() {
+    $('#accordion').accordion({
+      active: false,
+      collapsible: true,
+      //event: "mouseover"
+    });
+  });
+
+</script>
