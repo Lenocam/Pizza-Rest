@@ -4,7 +4,9 @@ Rails.application.routes.draw do
   devise_for :users
   resources :categories
   resources :menus
-  resources :products
-  resources :sizes
+  resources :products do
+    resources :sizes
+  end
+
   root 'home#index'
 end

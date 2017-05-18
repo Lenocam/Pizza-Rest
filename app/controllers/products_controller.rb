@@ -6,7 +6,6 @@ before_action :set_product, only: [:show, :edit, :update, :destroy]
 def index
   @products = Product.all
   @categories = Category.all
-  @sizeables = Sizeable.all
 end
 
 # GET /products/1
@@ -18,7 +17,8 @@ end
 def new
   @product = Product.new
   @categories = Category.all
-  @sizeables = Sizeable.all
+  @variants = Product::VARIANTS
+
 end
 
 # GET /products/1/edit
@@ -29,7 +29,9 @@ end
 # POST /products.json
 def create
   @product = Product.new(product_params)
+  @product.variants.build
   @categories = Category.all
+
 
 
   respond_to do |format|
@@ -78,6 +80,6 @@ private
   end
 
   def product_params
-    params.require(:product).permit(:name, :description, :category_id, :sizes )
+    params.require(:product).permit(:name, :description, :category_id, :amount, variants_attributes: [:id, :size_name] )
   end
 end
